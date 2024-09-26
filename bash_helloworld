@@ -1,7 +1,25 @@
-#print Hello, World! with the echo command
-echo “This is another string!”
-# print numbers
-for ((i=1; i<=10;i++))
-do
-  echo $i
+#!/bin/bash
+
+# Initialize sum variable, which will be used to calculate the average
+sum=0
+
+# Create a count variable to count the number of numbers generated
+count=10
+
+# Loop to generate 10 random numbers and compute their sum
+echo "Generated numbers:"
+for (( i=1; i<=count; i++ )); do
+    # Generate a random number between 1 and 100 so it does not get too crazy
+    num=$(( RANDOM % 100 + 1 )) #random is a built-in bash variable that generates random numbers and %100 gives the remainder when divided by 100, so numbers will be between 0 and 99, +1 adjusts it to get a range from 1 to 100
+    echo $num
+
+    # Add the random number to the sum
+    sum=$(( sum + num ))
 done
+
+# Calculate the average
+average=$(echo "$sum / $count")
+
+# Output the sum and average
+echo "Sum: $sum"
+echo "Average: $average"
